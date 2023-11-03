@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/theme_provider.dart';
@@ -16,6 +17,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Drawer(
         child: Material(
       color: Theme.of(context).scaffoldBackgroundColor,
@@ -33,31 +35,35 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     // width: 60,
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 Flexible(
-                  child: Text('News app'),
+                  child: Text(
+                    'News app',
+                    style: GoogleFonts.lobster(
+                        textStyle: const TextStyle(fontSize: 20, letterSpacing: 0.6)),
+                  ),
                 )
               ],
             ),
           ),
-          Gap(20),
-          listTiles(
+          const Gap(20),
+          ListTilesWidgetWidget(
             label: "Home",
             icon: IconlyBold.home,
             fct: () {},
           ),
-          listTiles(
+          ListTilesWidgetWidget(
             label: "Bookmarks",
             icon: IconlyBold.bookmark,
             fct: () {},
           ),
-          Divider(
+          const Divider(
             thickness: 5,
           ),
           SwitchListTile(
               title: Text(
                 themeProvider.getDarkTheme ? 'Dark' : 'Light',
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
               ),
               secondary: Icon(
                 themeProvider.getDarkTheme ? Icons.dark_mode : Icons.light_mode,
@@ -75,8 +81,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   }
 }
 
-class listTiles extends StatelessWidget {
-  const listTiles({
+class ListTilesWidgetWidget extends StatelessWidget {
+  const ListTilesWidgetWidget({
     super.key,
     required this.label,
     required this.fct,
@@ -94,7 +100,7 @@ class listTiles extends StatelessWidget {
       ),
       title: Text(
         label,
-        style: TextStyle(fontSize: 20),
+        style: const TextStyle(fontSize: 20),
       ),
       onTap: () {
         fct();
