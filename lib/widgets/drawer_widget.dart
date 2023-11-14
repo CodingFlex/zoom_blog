@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news_app_flutter_course/inner_screens/bookmarks_screen.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
+import '../inner_screens/search_screen.dart';
 import '../providers/theme_provider.dart';
 
 class DrawerWidget extends StatefulWidget {
@@ -40,7 +43,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   child: Text(
                     'News app',
                     style: GoogleFonts.lobster(
-                        textStyle: const TextStyle(fontSize: 20, letterSpacing: 0.6)),
+                        textStyle:
+                            const TextStyle(fontSize: 20, letterSpacing: 0.6)),
                   ),
                 )
               ],
@@ -55,7 +59,16 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           ListTilesWidgetWidget(
             label: "Bookmarks",
             icon: IconlyBold.bookmark,
-            fct: () {},
+            fct: () {
+              Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.rightToLeft,
+                    child: BookmarkScreen(),
+                    inheritTheme: true,
+                    ctx: context),
+              );
+            },
           ),
           const Divider(
             thickness: 5,
