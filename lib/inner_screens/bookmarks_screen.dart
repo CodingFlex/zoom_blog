@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news_app_flutter_course/widgets/empty_screen.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../services/utils.dart';
+import '../widgets/articles_widget.dart';
 import 'search_screen.dart';
 
 class BookmarkScreen extends StatefulWidget {
@@ -31,6 +33,15 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
         ),
         centerTitle: true,
       ),
+      body: const EmptyNewsWidget(
+        text: 'No bookmarks yet',
+        imagePath: 'assets/images/bookmark.png',
+      ),
+      // ListView.builder(
+      //     itemCount: 20,
+      //     itemBuilder: (context, index) {
+      //       return ArticlesWidget();
+      //     }),
     );
   }
 }

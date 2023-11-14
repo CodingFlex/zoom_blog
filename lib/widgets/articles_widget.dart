@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:gap/gap.dart';
 import 'package:news_app_flutter_course/consts/vars.dart';
+import 'package:news_app_flutter_course/inner_screens/news_details_webview.dart';
 import 'package:news_app_flutter_course/services/utils.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ArticlesWidget extends StatelessWidget {
   const ArticlesWidget({super.key});
@@ -73,7 +75,16 @@ class ArticlesWidget extends StatelessWidget {
                           Row(
                             children: [
                               IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType.rightToLeft,
+                                        child: const NewsDetailsWebView(),
+                                        inheritTheme: true,
+                                        ctx: context),
+                                  );
+                                },
                                 icon: Icon(
                                   Icons.link,
                                   color: Colors.blue,
